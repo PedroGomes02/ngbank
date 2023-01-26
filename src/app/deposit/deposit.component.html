@@ -1,0 +1,14 @@
+<p>deposit works!</p>
+
+<form [formGroup]="depositForm" (ngSubmit)="onSubmit()">
+  <label>
+    Value:
+    <input
+      type="number"
+      min="0"
+      required
+      formControlName="depositValue"
+    />
+  </label>
+  <button type="submit">Make Deposit</button>
+</form>
