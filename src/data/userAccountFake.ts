@@ -1,6 +1,6 @@
 export const userAccountFake = {
   name: 'Sysnovare',
-  email: 'sysnovare@email.com',
+  email: 'sysnovare@email.pt',
   password: '1234',
   account: {
     balance: 10,

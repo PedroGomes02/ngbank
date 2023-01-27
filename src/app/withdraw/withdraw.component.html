@@ -1,9 +1,9 @@
-<p>withdraw works!</p>
-
-<form [formGroup]="withdrawForm" (ngSubmit)="onSubmit()">
-  <label>
-    Value:
-    <input type="number" min="0" required formControlName="withdrawValue" />
-  </label>
-  <button type="submit">Make Withdraw</button>
-</form>
+<div class="withdrawContainer">
+  <form [formGroup]="withdrawForm" (ngSubmit)="onSubmit()">
+    <label>
+      Value:
+      <input type="number" min="0" required formControlName="withdrawValue" />
+    </label>
+    <button type="submit">Make Withdraw</button>
+  </form>
+</div>

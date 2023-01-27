@@ -22,8 +22,11 @@ export class LoginComponent {
   ) {}
 
   onSubmit() {
-    this.accountService.setIsAuth(true);
-    this.accountService.setAccount(userAccountFake)
-    this.isAuthFromLogin.emit(true);
+    this.isAuthFromLogin.emit(
+      this.accountService.checkAuth(
+        this.loginForm.value.email,
+        this.loginForm.value.password
+      )
+    );
   }
 }

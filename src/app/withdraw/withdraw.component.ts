@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AccountService } from '../account.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class WithdrawComponent {
 
   constructor(
     private accountService: AccountService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {}
 
   onSubmit() {
@@ -22,5 +24,6 @@ export class WithdrawComponent {
       Number(this.withdrawForm.value.withdrawValue)
     );
     this.withdrawForm.reset();
+    this.router.navigateByUrl('/');
   }
 }

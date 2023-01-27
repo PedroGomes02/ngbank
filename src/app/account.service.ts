@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { userAccountFake } from 'src/data/userAccountFake';
 
 @Injectable({
   providedIn: 'root',
@@ -30,6 +31,22 @@ export class AccountService {
 
   setIsAuth(isAuth: boolean) {
     this.isAuth = isAuth;
+  }
+
+  checkAuth(email: any, password: any) {
+    if (userAccountFake.email === email) {
+      if (userAccountFake.password === password) {
+        this.setIsAuth(true);
+        this.setAccount(userAccountFake);
+        return true;
+      } else {
+        alert('Wrong Password');
+        return;
+      }
+    } else {
+      alert('Wrong Email');
+      return;
+    }
   }
 
   setAccount(userAccount: any) {

@@ -1,31 +1,33 @@
-<p>Welcome {{userData.name}}</p>
-<p>Your Balance is: {{ balance }}</p>
-<nav>
-  <ul>
-    <li>
+<div class="landPageContainer">
+  <p>Welcome {{ userData.name }}</p>
+  <div class="balanceContainer">
+    <p>Account Balance</p>
+    <p class="balanceValue">{{ balance }}€</p>
+  </div>
+  <nav>
+    <button>
       <a
         routerLink="/movements"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
         >Movements</a
       >
-    </li>
-    <li>
+    </button>
+    <button>
       <a
         routerLink="/deposit"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
         >Deposit</a
       >
-    </li>
-
-    <li>
+    </button>
+    <button>
       <a
         routerLink="/withdraw"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
         >Withdraw</a
       >
-    </li>
-  </ul>
-</nav>
+    </button>
+  </nav>
+</div>

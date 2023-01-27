@@ -1,8 +1,10 @@
 .appHeader {
-  text-align: center;
-  background-color: darkcyan;
-  padding: 1rem;
+  margin: 1rem;
   font-size: 2rem;
   font-weight: bold;
   color: white;
+}
+.logoutButton {
+  margin: 1rem;
+  padding: 0.5rem;
 }
