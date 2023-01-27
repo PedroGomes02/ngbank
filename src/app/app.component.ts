@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AccountService } from './account.service';
 
 import { Router } from '@angular/router';
@@ -8,18 +8,12 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
-  showLoginForm = true;
+export class AppComponent {
   constructor(private accountService: AccountService, private router: Router) {}
 
-  handleIsAuth(emitValue: boolean) {
-    this.showLoginForm = emitValue;
-    alert('change no app component');
-  }
-  ngOnInit() {
-    this.showLoginForm = !this.accountService.getIsAuth();
-    if (this.showLoginForm) {
-      this.router.navigateByUrl('/login');
-    }
+  isAuthFromLogin = false;
+
+  handleIsAuth(emitValue: any) {
+    this.isAuthFromLogin = emitValue;
   }
 }

@@ -1,12 +1,12 @@
-<p>login works!</p>
+<p>Please login first</p>
 
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <label>
-    Username:
-    <input type="text" required formControlName="username" />
+    Email (sysnovare@email.pt):
+    <input type="email" required formControlName="email" />
   </label>
   <label>
-    Password:
+    Password (1234):
     <input type="password" required formControlName="password" />
   </label>
   <button type="submit">Log In</button>

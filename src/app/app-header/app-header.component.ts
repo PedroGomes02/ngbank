@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-app-header',
   templateUrl: './app-header.component.html',
-  styleUrls: ['./app-header.component.css']
+  styleUrls: ['./app-header.component.css'],
 })
 export class AppHeaderComponent {
-
+  @Input() isAuthFromParent: boolean = false;
 }

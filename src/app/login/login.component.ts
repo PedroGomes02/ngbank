@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { userAccountFake } from 'src/data/userAccountFake';
 import { AccountService } from '../account.service';
 
 @Component({
@@ -10,22 +10,20 @@ import { AccountService } from '../account.service';
 })
 export class LoginComponent {
   loginForm = this.formBuilder.group({
-    username: '',
+    email: '',
     password: '',
   });
 
-  @Output() isAuth = new EventEmitter<boolean>();
+  @Output() isAuthFromLogin = new EventEmitter<boolean>();
 
   constructor(
     private accountService: AccountService,
-    private formBuilder: FormBuilder,
-    private router: Router
+    private formBuilder: FormBuilder
   ) {}
 
   onSubmit() {
     this.accountService.setIsAuth(true);
-    this.isAuth.emit(true);
-    this.loginForm.reset();
-    this.router.navigateByUrl('/');
+    this.accountService.setAccount(userAccountFake)
+    this.isAuthFromLogin.emit(true);
   }
 }

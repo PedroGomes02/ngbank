@@ -9,10 +9,11 @@ import { AccountService } from '../account.service';
 })
 export class LandPageComponent implements OnInit {
   balance = 0;
+  userData: any = '';
   constructor(private accountService: AccountService) {}
 
   ngOnInit(): void {
     this.balance = this.accountService.getBalance();
+    this.userData = this.accountService.userData;
   }
-
 }
