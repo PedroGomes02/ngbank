@@ -8,7 +8,15 @@ import { AccountService } from '../account.service';
   styleUrls: ['./movements.component.css'],
 })
 export class MovementsComponent implements OnInit {
-  movements: any = [];
+  movements = [
+    {
+      index: 0,
+      type: 'deposit',
+      value: 0,
+      balance: 0,
+      date: 'Thu, 26 Jan 2020 11:02:09 GMT',
+    },
+  ];
   constructor(private accountService: AccountService) {}
 
   ngOnInit(): void {

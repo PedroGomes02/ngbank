@@ -1,3 +1,30 @@
+export interface UserInterface {
+  name: string;
+  email: string;
+  password: string;
+  account:
+    | {
+        balance: number;
+        movements: {
+          index: number;
+          type: string;
+          value: number;
+          balance: number;
+          date: string;
+        }[];
+      }
+    | {
+        balance: number;
+        movements: {
+          index: number;
+          type: string;
+          value: number;
+          balance: number;
+          date: string;
+        }[];
+      };
+}
+
 export const userAccountFake = {
   name: 'Sysnovare',
   email: 'sysnovare@email.pt',

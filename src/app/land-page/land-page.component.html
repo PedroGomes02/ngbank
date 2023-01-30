@@ -1,33 +1,18 @@
 <div class="landPageContainer">
-  <p>Welcome {{ userData.name }}</p>
-  <div class="balanceContainer">
-    <p>Account Balance</p>
-    <p class="balanceValue">{{ balance }}€</p>
-  </div>
-  <nav>
-    <button>
-      <a
-        routerLink="/movements"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-        >Movements</a
-      >
+  Welcome {{ userData.name }} ({{ userData.email }})
+  <mat-card class="balanceContainer">
+    <mat-card-title class="balanceTitle">Account Balance</mat-card-title>
+    <mat-card-content class="balanceValue">{{ balance }}€</mat-card-content>
+  </mat-card>
+  <mat-card class="navContainer">
+    <button mat-raised-button color="primary" routerLink="/movements">
+      Movements
     </button>
-    <button>
-      <a
-        routerLink="/deposit"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-        >Deposit</a
-      >
+    <button mat-raised-button color="accent" routerLink="/deposit">
+      Deposit
     </button>
-    <button>
-      <a
-        routerLink="/withdraw"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-        >Withdraw</a
-      >
+    <button mat-raised-button color="warn" routerLink="/withdraw">
+      Withdraw
     </button>
-  </nav>
+  </mat-card>
 </div>

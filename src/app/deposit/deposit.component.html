@@ -1,9 +1,21 @@
 <div class="depositContainer">
+  Make your deposit:
+
   <form [formGroup]="depositForm" (ngSubmit)="onSubmit()">
-    <label>
-      Value:
-      <input type="number" min="0" required formControlName="depositValue" />
-    </label>
-    <button type="submit">Make Deposit</button>
+    <mat-form-field>
+      <mat-label>Value</mat-label>
+      <input
+        matInput
+        type="number"
+        min="0"
+        required
+        formControlName="depositValue"
+      />
+    </mat-form-field>
+    <button mat-raised-button color="accent" type="submit">Make Deposit</button>
   </form>
+
+  <button class="backToHomeButton" mat-raised-button routerLink="/">
+    Back to Home
+  </button>
 </div>

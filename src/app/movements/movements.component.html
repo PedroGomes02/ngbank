@@ -1,10 +1,18 @@
 <div class="movementsContainer">
-  <ul>
-    <li *ngFor="let movement of movements" class={{movement.type}}>
+  Your movements:
+
+  <mat-list>
+    <mat-card *ngFor="let movement of movements" class="{{ movement.type }}">
       <span>Date: {{ movement.date }}</span>
-      <span>Type: {{ movement.type }}</span>
-      <span>Value: {{ movement.value }}</span>
-      <span>Balance: {{ movement.balance }}</span>
-    </li>
-  </ul>
+      <span
+        >{{ movement.type === "deposit" ? "Deposit" : "Withdraw" }}:
+        {{ movement.value }}€</span
+      >
+      <span>Balance: {{ movement.balance }}€</span>
+    </mat-card>
+  </mat-list>
+
+  <button class="backToHomeButton" mat-raised-button routerLink="/">
+    Back to Home
+  </button>
 </div>

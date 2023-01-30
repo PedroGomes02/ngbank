@@ -1,6 +1,10 @@
-<app-app-header [isAuthFromParent]="isAuthFromLogin"></app-app-header>
-<router-outlet *ngIf="isAuthFromLogin"> </router-outlet>
-<app-login
-  *ngIf="!isAuthFromLogin"
-  (isAuthFromLogin)="handleIsAuth($event)"
-></app-login>
+<app-nav-bar [isAuthFromParent]="isAuthFromLogin">
+
+  <router-outlet *ngIf="isAuthFromLogin"> </router-outlet>
+  
+  <app-login
+    *ngIf="!isAuthFromLogin"
+    (isAuthFromLogin)="handleIsAuth($event)"
+  ></app-login>
+
+</app-nav-bar>

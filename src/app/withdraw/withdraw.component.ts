@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import { AccountService } from '../account.service';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AccountService } from '../account.service';
 
 @Component({
   selector: 'app-withdraw',
@@ -23,7 +23,6 @@ export class WithdrawComponent {
     this.accountService.withdrawFunds(
       Number(this.withdrawForm.value.withdrawValue)
     );
-    this.withdrawForm.reset();
     this.router.navigateByUrl('/');
   }
 }

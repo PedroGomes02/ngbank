@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserInterface } from 'src/data/userAccountFake';
 
 import { AccountService } from '../account.service';
 
@@ -9,10 +10,27 @@ import { AccountService } from '../account.service';
 })
 export class LandPageComponent implements OnInit {
   balance = 0;
-  userData: any = '';
+  userData: UserInterface = {
+    name: '',
+    email: '',
+    password: '',
+    account: {
+      balance: 0,
+      movements: [
+        {
+          index: 0,
+          type: 'deposit',
+          value: 0,
+          balance: 0,
+          date: 'Thu, 26 Jan 2020 11:02:09 GMT',
+        },
+      ],
+    },
+  };
+
   constructor(private accountService: AccountService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.balance = this.accountService.getBalance();
     this.userData = this.accountService.userData;
   }

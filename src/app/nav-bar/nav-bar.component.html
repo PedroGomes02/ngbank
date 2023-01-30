@@ -1,0 +1,64 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item
+        routerLink="/"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Home</mat-list-item
+      >
+      <mat-list-item
+        routerLink="/movements"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Movements</mat-list-item
+      >
+      <mat-list-item
+        routerLink="/deposit"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Deposit</mat-list-item
+      >
+      <mat-list-item
+        routerLink="/withdraw"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Withdraw</mat-list-item
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <div class="menulogoContainer">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async"
+        >
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span class="logo" routerLink="/">NG BANK</span>
+      </div>
+      <button
+        mat-raised-button
+        *ngIf="isAuthFromParent"
+        onclick="document.location.reload()"
+      >
+        LOG OUT
+      </button>
+    </mat-toolbar>
+
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

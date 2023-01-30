@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import { AccountService } from '../account.service';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AccountService } from '../account.service';
 
 @Component({
   selector: 'app-deposit',
@@ -23,7 +23,6 @@ export class DepositComponent {
     this.accountService.depositFunds(
       Number(this.depositForm.value.depositValue)
     );
-    this.depositForm.reset();
     this.router.navigateByUrl('/');
   }
 }

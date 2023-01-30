@@ -1,9 +1,21 @@
 <div class="withdrawContainer">
+  Make your withdraw:
+
   <form [formGroup]="withdrawForm" (ngSubmit)="onSubmit()">
-    <label>
-      Value:
-      <input type="number" min="0" required formControlName="withdrawValue" />
-    </label>
-    <button type="submit">Make Withdraw</button>
+    <mat-form-field>
+      <mat-label>Value</mat-label>
+      <input
+        matInput
+        type="number"
+        min="0"
+        required
+        formControlName="withdrawValue"
+      />
+    </mat-form-field>
+    <button mat-raised-button color="warn" type="submit">Make Withdraw</button>
   </form>
+
+  <button class="backToHomeButton" mat-raised-button routerLink="/">
+    Back to Home
+  </button>
 </div>

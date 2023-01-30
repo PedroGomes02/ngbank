@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { userAccountFake } from 'src/data/userAccountFake';
+import { userAccountFake, UserInterface } from 'src/data/userAccountFake';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AccountService {
-  isAuth: boolean = false;
-
   userData = {
     name: '',
     email: '',
@@ -24,19 +22,14 @@ export class AccountService {
       ],
     },
   };
-
-  getIsAuth() {
-    return this.isAuth;
+  
+  setAccount(userAccount: UserInterface) {
+    this.userData = userAccount;
   }
 
-  setIsAuth(isAuth: boolean) {
-    this.isAuth = isAuth;
-  }
-
-  checkAuth(email: any, password: any) {
+  checkAuth(email: string | null | undefined, password: string | null | undefined) {
     if (userAccountFake.email === email) {
       if (userAccountFake.password === password) {
-        this.setIsAuth(true);
         this.setAccount(userAccountFake);
         return true;
       } else {
@@ -47,10 +40,6 @@ export class AccountService {
       alert('Wrong Email');
       return;
     }
-  }
-
-  setAccount(userAccount: any) {
-    this.userData = userAccount;
   }
 
   getBalance() {
@@ -73,9 +62,10 @@ export class AccountService {
         balance: this.userData.account.balance,
         date: new Date().toUTCString(),
       });
-      alert(`You have deposit ${value}`);
+      alert(`You have deposit ${value}€`);
     }
   }
+  
   withdrawFunds(value: number) {
     if (value <= 0) {
       alert('Not possible to withdraw zero or a negative value!');
@@ -90,7 +80,7 @@ export class AccountService {
         balance: this.userData.account.balance,
         date: new Date().toUTCString(),
       });
-      alert(`You have withdraw ${value}`);
+      alert(`You have withdraw ${value}€`);
     }
   }
 }
