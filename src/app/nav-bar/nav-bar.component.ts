@@ -19,4 +19,9 @@ export class NavBarComponent {
     );
 
   constructor(private breakpointObserver: BreakpointObserver) {}
+
+  onLogOut() {
+    localStorage.clear();
+    document.location.reload();
+  }
 }

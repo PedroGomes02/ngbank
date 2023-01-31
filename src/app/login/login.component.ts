@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { userAccountFake } from 'src/data/userAccountFake';
 import { AccountService } from '../account.service';
 
 @Component({

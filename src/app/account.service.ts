@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { userAccountFake, UserInterface } from 'src/data/userAccountFake';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogModalComponent } from './dialog-modal/dialog-modal.component';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -22,14 +25,17 @@ export class AccountService {
       ],
     },
   };
-  
-  setAccount(userAccount: UserInterface) {
-    this.userData = userAccount;
-  }
 
-  checkAuth(email: string | null | undefined, password: string | null | undefined) {
+  constructor(private router: Router, public dialog: MatDialog) {}
+
+  checkAuth(
+    email: string | null | undefined,
+    password: string | null | undefined
+  ) {
     if (userAccountFake.email === email) {
       if (userAccountFake.password === password) {
+        localStorage.setItem('email', email);
+        localStorage.setItem(email, JSON.stringify(userAccountFake));
         this.setAccount(userAccountFake);
         return true;
       } else {
@@ -42,6 +48,10 @@ export class AccountService {
     }
   }
 
+  setAccount(userAccount: UserInterface) {
+    this.userData = userAccount;
+  }
+
   getBalance() {
     return this.userData.account.balance;
   }
@@ -50,37 +60,63 @@ export class AccountService {
     return this.userData.account.movements;
   }
 
-  depositFunds(value: number) {
+  openDepositDialog(value: number): any {
     if (value <= 0) {
       alert('Not possible to deposit zero or a negative value!');
-    } else {
-      this.userData.account.balance += value;
-      this.userData.account.movements.push({
-        index: this.userData.account.movements.length,
-        type: 'deposit',
-        value: value,
-        balance: this.userData.account.balance,
-        date: new Date().toUTCString(),
-      });
-      alert(`You have deposit ${value}€`);
+      return;
     }
+    const message = 'Deposit';
+    const dialogRef = this.dialog.open(DialogModalComponent, {
+      data: { message: message, value: value },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === true) {
+        this.userData.account.balance += value;
+        this.userData.account.movements.push({
+          index: this.userData.account.movements.length,
+          type: 'deposit',
+          value: value,
+          balance: this.userData.account.balance,
+          date: new Date().toUTCString(),
+        });
+        localStorage.setItem(
+          this.userData.email,
+          JSON.stringify(this.userData)
+        );
+        this.router.navigateByUrl('/');
+      }
+    });
   }
-  
-  withdrawFunds(value: number) {
+
+  openWithdrawDialog(value: number): any {
     if (value <= 0) {
       alert('Not possible to withdraw zero or a negative value!');
-    } else if (value > this.userData.account.balance) {
-      alert('Insuficcient Funds!');
-    } else {
-      this.userData.account.balance -= value;
-      this.userData.account.movements.push({
-        index: this.userData.account.movements.length,
-        type: 'withdraw',
-        value: value,
-        balance: this.userData.account.balance,
-        date: new Date().toUTCString(),
-      });
-      alert(`You have withdraw ${value}€`);
+      return;
     }
+    if (value > this.userData.account.balance) {
+      alert('Insuficcient Funds!');
+      return;
+    }
+    const message = 'Withdraw';
+    const dialogRef = this.dialog.open(DialogModalComponent, {
+      data: { message: message, value: value },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === true) {
+        this.userData.account.balance -= value;
+        this.userData.account.movements.push({
+          index: this.userData.account.movements.length,
+          type: 'withdraw',
+          value: value,
+          balance: this.userData.account.balance,
+          date: new Date().toUTCString(),
+        });
+        localStorage.setItem(
+          this.userData.email,
+          JSON.stringify(this.userData)
+        );
+        this.router.navigateByUrl('/');
+      }
+    });
   }
 }

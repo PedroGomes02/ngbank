@@ -9,7 +9,6 @@
 
 form {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
@@ -17,6 +16,11 @@ form {
 
 button {
   padding: 1rem;
+}
+
+.defaultWithdrawContainer {
+  display:flex;
+  gap: 0.5rem;
 }
 
 .backToHomeButton {

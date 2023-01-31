@@ -21,6 +21,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogModalComponent } from './dialog-modal/dialog-modal.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { MatInputModule } from '@angular/material/input';
     LandPageComponent,
     LoginComponent,
     NavBarComponent,
+    DialogModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import { MatInputModule } from '@angular/material/input';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

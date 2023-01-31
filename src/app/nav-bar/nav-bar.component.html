@@ -53,7 +53,7 @@
       <button
         mat-raised-button
         *ngIf="isAuthFromParent"
-        onclick="document.location.reload()"
+        (click)="onLogOut()"
       >
         LOG OUT
       </button>

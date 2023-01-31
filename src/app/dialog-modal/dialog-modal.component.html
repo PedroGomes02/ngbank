@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Confirm Movement</h2>
+<mat-dialog-content class="mat-typography">
+  <span>{{ data.message }}: {{ data.value }}€</span>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button color="warn" mat-dialog-close>Cancel</button>
+  <button mat-button color="accent" [mat-dialog-close]="true" cdkFocusInitial>
+    Confirm
+  </button>
+</mat-dialog-actions>

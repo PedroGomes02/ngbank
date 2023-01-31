@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { AccountService } from '../account.service';
 import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-deposit',
@@ -16,13 +15,15 @@ export class DepositComponent {
   constructor(
     private accountService: AccountService,
     private formBuilder: FormBuilder,
-    private router: Router
   ) {}
 
   onSubmit() {
-    this.accountService.depositFunds(
+    this.accountService.openDepositDialog(
       Number(this.depositForm.value.depositValue)
     );
-    this.router.navigateByUrl('/');
+  }
+
+  onClick(value: number) {
+    this.accountService.openDepositDialog(value);
   }
 }

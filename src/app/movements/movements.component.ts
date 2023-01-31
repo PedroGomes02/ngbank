@@ -19,7 +19,7 @@ export class MovementsComponent implements OnInit {
   ];
   constructor(private accountService: AccountService) {}
 
-  ngOnInit(): void {
-    this.movements = this.accountService.getMovements();
+  ngOnInit() {
+    this.movements = this.accountService.getMovements().reverse();
   }
 }

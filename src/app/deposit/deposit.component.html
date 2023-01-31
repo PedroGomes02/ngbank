@@ -15,6 +15,18 @@
     <button mat-raised-button color="accent" type="submit">Make Deposit</button>
   </form>
 
+  Make a standard deposit:
+
+  <div class="defaultStandardsContainer">
+    <button mat-raised-button color="accent" (click)="onClick(5)">5€</button>
+    <button mat-raised-button color="accent" (click)="onClick(10)">10€</button>
+    <button mat-raised-button color="accent" (click)="onClick(20)">20€</button>
+    <button mat-raised-button color="accent" (click)="onClick(50)">50€</button>
+    <button mat-raised-button color="accent" (click)="onClick(100)">
+      100€
+    </button>
+  </div>
+
   <button class="backToHomeButton" mat-raised-button routerLink="/">
     Back to Home
   </button>

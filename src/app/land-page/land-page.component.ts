@@ -31,7 +31,7 @@ export class LandPageComponent implements OnInit {
   constructor(private accountService: AccountService) {}
 
   ngOnInit() {
-    this.balance = this.accountService.getBalance();
+    this.balance = Number(this.accountService.getBalance().toFixed(3));
     this.userData = this.accountService.userData;
   }
 }
